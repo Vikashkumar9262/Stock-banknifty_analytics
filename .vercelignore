@@ -1,23 +1,48 @@
-# Backend directory (Python files)
+# Aggressively ignore all Python and backend files
 backend/
+**/backend/
 *.py
 *.pyc
+*.pyo
+*.pyd
 __pycache__/
+**/__pycache__/
+*.egg
+*.egg-info
 requirements.txt
+**/requirements.txt
 Procfile
+**/Procfile
 runtime.txt
+**/runtime.txt
+.python-version
+pyproject.toml
+setup.py
+setup.cfg
+Pipfile
+Pipfile.lock
+poetry.lock
 
 # Python virtual environments
 venv/
 env/
 ENV/
+.venv/
+.env/
+.ENV/
+**/venv/
+**/env/
+**/ENV/
 
 # Node modules (will be installed by Vercel)
 node_modules/
+**/node_modules/
 
 # Build artifacts
 build/
 dist/
+**/build/
+**/dist/
 
 # Environment files
 .env
@@ -25,29 +50,49 @@ dist/
 .env.development.local
 .env.test.local
 .env.production.local
+**/.env*
 
 # IDE files
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS files
 .DS_Store
 Thumbs.db
+ehthumbs.db
+Desktop.ini
 
 # Logs
 *.log
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+**/*.log
 
 # Git
 .git/
 .gitignore
+**/.git*
 
 # Documentation (optional - remove if you want them deployed)
 CONTRIBUTING.md
 CHANGELOG.md
 DEPLOYMENT.md
 README.md
+
+# Test files
+test_*.py
+*_test.py
+tests/
+**/tests/
+**/test_*
+
+# Cache directories
+.cache/
+.parcel-cache/
+.next/
+.nuxt/
+.vuepress/dist/

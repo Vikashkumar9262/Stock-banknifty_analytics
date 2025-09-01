@@ -5,7 +5,9 @@
       "src": "package.json",
       "use": "@vercel/static-build",
       "config": {
-        "distDir": "build"
+        "distDir": "build",
+        "installCommand": "npm install",
+        "buildCommand": "npm run build"
       }
     }
   ],
@@ -27,9 +29,8 @@
       "dest": "/index.html"
     }
   ],
-  "ignoreCommand": "echo 'Skipping backend build'",
-  "installCommand": "npm install",
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
-  "framework": "vite"
+  "functions": {},
+  "env": {
+    "SKIP_PYTHON_BUILD": "true"
+  }
 }
