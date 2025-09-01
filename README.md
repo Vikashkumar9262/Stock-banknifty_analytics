@@ -1,6 +1,12 @@
-# React
+# 🚀 BankNifty Analytics
 
-A modern React-based project utilizing the latest frontend technologies and tools for building responsive web applications.
+[![React](https://img.shields.io/badge/React-18.2.0-blue.svg)](https://reactjs.org/)
+[![Python](https://img.shields.io/badge/Python-3.8+-green.svg)](https://python.org/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.104.1-blue.svg)](https://fastapi.tiangolo.com/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![GitHub](https://img.shields.io/badge/GitHub-Ready-brightgreen.svg)](https://github.com/)
+
+A modern React-based project utilizing the latest frontend technologies and tools for building responsive web applications with a Python FastAPI backend for real-time financial data.
 
 ## 🚀 Features
 
@@ -177,10 +183,104 @@ python test_backend.py
 
 ## 📦 Deployment
 
+### Frontend Build
+
 Build the application for production:
 
 ```bash
 npm run build
+```
+
+### Backend Deployment
+
+The Python backend can be deployed to various platforms:
+
+#### Heroku
+```bash
+# Add Procfile
+web: uvicorn main:app --host 0.0.0.0 --port $PORT
+
+# Deploy
+heroku create your-app-name
+git push heroku main
+```
+
+#### Railway
+```bash
+# Connect your GitHub repo
+# Railway will auto-deploy on push
+```
+
+#### Vercel (Frontend) + Railway (Backend)
+```bash
+# Frontend: Connect to Vercel
+# Backend: Deploy to Railway
+# Update CORS origins in backend
+```
+
+## 🚀 GitHub Deployment
+
+### 1. Repository Setup
+
+1. **Create GitHub Repository:**
+   ```bash
+   git init
+   git add .
+   git commit -m "Initial commit: BankNifty Analytics with Python Backend"
+   git branch -M main
+   git remote add origin https://github.com/yourusername/banknifty-analytics.git
+   git push -u origin main
+   ```
+
+2. **Enable GitHub Pages (Optional):**
+   - Go to Settings > Pages
+   - Source: Deploy from a branch
+   - Branch: main, folder: / (root)
+
+### 2. Environment Variables
+
+Create `.env.example` files for both frontend and backend:
+
+```bash
+# Frontend (.env.example)
+REACT_APP_BACKEND_URL=http://localhost:8000
+REACT_APP_GITHUB_URL=https://github.com/yourusername/banknifty-analytics
+
+# Backend (backend/.env.example)
+HOST=0.0.0.0
+PORT=8000
+ALLOWED_ORIGINS=http://localhost:4028,http://localhost:3000
+```
+
+### 3. GitHub Actions (Optional)
+
+Create `.github/workflows/deploy.yml`:
+
+```yaml
+name: Deploy
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+      - name: Install dependencies
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Deploy to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
 ```
 
 ## 🔄 Integration
@@ -191,3 +291,38 @@ The frontend automatically integrates with the Python backend:
 2. **Real-time Updates**: WebSocket integration for live data
 3. **Enhanced Data**: Additional technical indicators and market analysis
 4. **Performance**: Faster data fetching with Python's async capabilities
+
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+1. Fork the repository
+2. Create a feature branch (`git checkout -b feature/amazing-feature`)
+3. Commit your changes (`git commit -m 'Add some amazing feature'`)
+4. Push to the branch (`git push origin feature/amazing-feature`)
+5. Open a Pull Request
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🆘 Support
+
+- 📖 [Documentation](https://github.com/yourusername/banknifty-analytics#readme)
+- 🐛 [Report a Bug](https://github.com/yourusername/banknifty-analytics/issues)
+- 💡 [Request a Feature](https://github.com/yourusername/banknifty-analytics/issues)
+- 📧 [Contact](mailto:your-email@example.com)
+
+## 🙏 Acknowledgments
+
+- Built with [Rocket.new](https://rocket.new)
+- Powered by React and Vite
+- Styled with Tailwind CSS
+- Enhanced with Python FastAPI backend
+- Deployed on GitHub
+
+---
+
+**Built with ❤️ on Rocket.new**
+
+[⬆ Back to top](#-banknifty-analytics)
