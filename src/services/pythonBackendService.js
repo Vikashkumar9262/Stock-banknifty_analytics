@@ -117,7 +117,10 @@ class PythonBackendService {
   // WebSocket connection for real-time updates
   createWebSocketConnection(symbol, onMessage, onError, onClose) {
     try {
-      const ws = new WebSocket(`ws://localhost:8000/ws`);
+      const httpBase = (process.env.REACT_APP_BACKEND_URL || 'http://localhost:8000').replace(/\/$/, '');
+      const isHttps = (typeof location !== 'undefined' && location.protocol === 'https:') || /^https:/i.test(httpBase);
+      const wsBase = httpBase.replace(/^http(s)?:/i, isHttps ? 'wss:' : 'ws:');
+      const ws = new WebSocket(`${wsBase}/ws`);
       
       ws.onopen = () => {
         console.log('🔌 WebSocket connected');

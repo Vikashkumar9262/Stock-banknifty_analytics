@@ -35,3 +35,4 @@ else
 fi
 
 echo "🎉 Frontend build completed successfully!"
+

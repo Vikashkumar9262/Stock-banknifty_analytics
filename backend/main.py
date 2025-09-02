@@ -1,5 +1,6 @@
 from fastapi import FastAPI, HTTPException, WebSocket, WebSocketDisconnect
 from fastapi.middleware.cors import CORSMiddleware
+import os
 from fastapi.responses import JSONResponse
 import yfinance as yf
 import pandas as pd
@@ -22,9 +23,13 @@ app = FastAPI(
 )
 
 # CORS middleware for frontend integration
+# Configure CORS from environment variable ALLOWED_ORIGINS (comma-separated), with sensible defaults for dev
+allowed_origins_env = os.getenv("ALLOWED_ORIGINS", "http://localhost:4028,http://localhost:3000,http://localhost:5173")
+allowed_origins = [origin.strip() for origin in allowed_origins_env.split(",") if origin.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:4028", "http://localhost:3000", "*"],
+    allow_origins=allowed_origins,
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

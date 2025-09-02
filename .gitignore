@@ -27,7 +27,9 @@ wheels/
 .env.development.local
 .env.test.local
 .env.production.local
+.env.example
 backend/.env
+backend/.env.example
 
 # Build outputs
 /build
